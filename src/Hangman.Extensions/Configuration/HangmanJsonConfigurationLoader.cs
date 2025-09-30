@@ -23,7 +23,7 @@ public static class HangmanJsonConfigurationLoader
         if (!File.Exists(encPath))
         {
             logger?.LogWarning("[config] file not found: " + encPath);
-            return BuiltinConfigurationFactory.Create(); ;
+            return BuiltinConfigurationFactory.Create();
         }
 
         string? keyB64 = Environment.GetEnvironmentVariable(keyEnv);
@@ -31,7 +31,7 @@ public static class HangmanJsonConfigurationLoader
         if (string.IsNullOrWhiteSpace(keyB64))
         {
             logger?.LogError("[config] env var is not set: " + keyEnv);
-            return BuiltinConfigurationFactory.Create(); ;
+            return BuiltinConfigurationFactory.Create();
         }
 
         string? json;
