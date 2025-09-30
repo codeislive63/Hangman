@@ -11,4 +11,28 @@
     <NoWarn>NU1803</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Hangman.Domain\**" />
+    <Compile Remove="Hangman.Extensions\**" />
+    <EmbeddedResource Remove="Hangman.Domain\**" />
+    <EmbeddedResource Remove="Hangman.Extensions\**" />
+    <None Remove="Hangman.Domain\**" />
+    <None Remove="Hangman.Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.enc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.enc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Hangman.Domain\Hangman.Domain.csproj" />
+    <ProjectReference Include="Hangman.Extensions\Hangman.Extensions.csproj" />
+  </ItemGroup>
+
 </Project>
