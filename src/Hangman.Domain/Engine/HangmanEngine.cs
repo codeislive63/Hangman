@@ -1,4 +1,5 @@
 ﻿using Hangman.Domain.Models;
+using System.Text.RegularExpressions;
 
 namespace Hangman.Domain.Engine;
 
@@ -54,7 +55,7 @@ public sealed class HangmanEngine
     /// <summary>Обрабатывает ввод одной буквы</summary>
     public GuessResult MakeGuess(char ch)
     {
-        if (!char.IsLetter(ch))
+        if (!(ch is >= 'а' and <= 'я' or >= 'А' and <= 'Я' or 'ё' or 'Ё'))
         {
             return GuessResult.Invalid;
         }
