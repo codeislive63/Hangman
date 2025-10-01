@@ -16,7 +16,7 @@ public sealed class Host(string[] args, IServiceProvider services)
         var controllers = Services.GetRequiredService<IEnumerable<IController>>();
         var controller = controllers.FirstOrDefault(c => c.CanHandle(_args))
                         ?? throw new InvalidOperationException("No suitable controller found.");
-        
+
         Environment.ExitCode = controller.Run(_args);
     }
 }

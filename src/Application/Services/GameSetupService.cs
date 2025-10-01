@@ -6,7 +6,7 @@ namespace Hangman.Application.Services;
 
 /// <summary>Реализация подготовки игры на базе репозитория слов</summary>
 public sealed class GameSetupService(
-    IHangmanConfiguration configuration, 
+    IHangmanConfiguration configuration,
     IWordRepository repository) : IGameSetupService
 {
     private readonly IHangmanConfiguration _configuration = configuration;

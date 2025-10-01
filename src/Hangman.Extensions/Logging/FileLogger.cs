@@ -19,21 +19,21 @@ public sealed class FileLogger : ILogger
     }
 
     public void LogDebug(string message) => WriteFile("DEBUG", message);
-    
+
     public void LogInformation(string message) => WriteFile("INFO", message);
-    
+
     public void LogWarning(string message) => WriteFile("WARNING", message);
-    
+
     public void LogError(string message, Exception? ex = null) =>
         WriteFile("ERROR", message + (ex == null ? "" : Environment.NewLine + ex));
-    
+
     public void LogCritical(string message, Exception? ex = null) =>
         WriteFile("CRITICAL", message + (ex == null ? "" : Environment.NewLine + ex));
 
     private void WriteFile(string level, string message)
     {
         var line = $"{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss.fff} [{level}] {message}";
-        
+
         lock (_lock)
         {
             if (_filePath is not null)

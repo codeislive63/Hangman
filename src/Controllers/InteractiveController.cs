@@ -64,7 +64,7 @@ public sealed class InteractiveController(
                         session.Category, session.Difficulty, session.MaxAttempts, session.Hint,
                         engine.RevealedWord, engine.MistakeCount, engine.MaxMistakes, engine.MissedLetters
                     );
-                    
+
                     _view.ShowWin(session.Secret);
 
                     return 0;
@@ -74,7 +74,7 @@ public sealed class InteractiveController(
                         session.Category, session.Difficulty, session.MaxAttempts, session.Hint,
                         engine.RevealedWord, engine.MistakeCount, engine.MaxMistakes, engine.MissedLetters
                     );
-                    
+
                     _view.ShowLose(session.Secret);
 
                     return 0;

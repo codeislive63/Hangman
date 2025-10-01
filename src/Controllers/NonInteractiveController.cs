@@ -20,7 +20,7 @@ public sealed class NonInteractiveController(ILogger logger) : IController
         var mask = RevealByPosition(secret, probe);
         var result = string.Equals(secret, probe, StringComparison.OrdinalIgnoreCase) ? "POS" : "NEG";
         Console.WriteLine($"{mask};{result}");
-        
+
         return 0;
     }
 
