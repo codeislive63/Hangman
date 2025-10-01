@@ -3,10 +3,10 @@
 /// <summary>Итог проверки попытки угадывания</summary>
 public enum GuessResult
 {
-    Invalid, 
-    Repeat, 
-    Hit, 
-    Miss, 
-    Win, 
+    Invalid,
+    Repeat,
+    Hit,
+    Miss,
+    Win,
     Lose
 }

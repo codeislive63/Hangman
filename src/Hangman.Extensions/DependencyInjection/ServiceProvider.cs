@@ -32,7 +32,7 @@ public class ServiceProvider : IServiceProvider
             var itemType = serviceType.GetGenericArguments()[0];
             var items = ResolveAll(itemType);
             var array = Array.CreateInstance(itemType, items.Count);
-            
+
             for (int i = 0; i < items.Count; i++)
             {
                 array.SetValue(items[i], i);

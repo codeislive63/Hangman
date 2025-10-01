@@ -14,7 +14,7 @@ public class AesAndConfigLoaderTests
         public void LogInformation(string m) { }
         public void LogWarning(string m) { }
         public void LogError(string m, Exception? ex = null) { }
-        public void LogDebug(string message){ }
+        public void LogDebug(string message) { }
         public void LogCritical(string message, Exception? ex = null) { }
     }
 

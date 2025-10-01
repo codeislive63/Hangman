@@ -18,7 +18,7 @@ public class InteractiveControllerTests
         view.PromptLetter().Returns("a", "b");
 
         var setup = Substitute.For<IGameSetupService>();
-        setup.Create(GameDifficulty.Easy).Returns(new GameSession 
+        setup.Create(GameDifficulty.Easy).Returns(new GameSession
         {
             Secret = "ab",
             Difficulty = GameDifficulty.Easy,

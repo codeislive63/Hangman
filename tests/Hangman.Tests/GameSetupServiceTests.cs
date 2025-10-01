@@ -16,7 +16,7 @@ public class GameSetupServiceTests
 
         public IReadOnlyCollection<WordCard> GetWordsByDifficulty(GameDifficulty d)
             => [.. _words.Where(w => w.Difficulty == d)];
-        
+
         public WordCard GetRandomWord(GameDifficulty? d = null, string? c = null)
         {
             var q = _words.AsEnumerable();
