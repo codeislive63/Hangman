@@ -113,7 +113,9 @@ public sealed class ConsoleView : IView
         Clear();
         ShowHeader(category, difficulty, maxAttempts, hint);
 
-        var frame = Frames[Math.Min(mistakes, Frames.Length - 1)];
+        var frameIndex = GetFrameIndex(mistakes, maxAttemptsAgain);
+        var frame = Frames[frameIndex];
+
         Console.WriteLine(frame);
         Console.WriteLine($"Слово:   {maskedWord}");
         Console.WriteLine($"Ошибок:  {mistakes}/{maxAttemptsAgain}");
@@ -138,4 +140,15 @@ public sealed class ConsoleView : IView
 
     /// <inheritdoc />
     public void ShowLose(string secret) => Console.WriteLine($"Поражение. Загаданное слово: {secret}");
+
+    private static int GetFrameIndex(int mistakes, int maxAttempts)
+    {
+        var denom = Math.Max(1, maxAttempts);
+
+        var idx = (int)Math.Round(
+            (double)mistakes * (Frames.Length - 1) / denom,
+            MidpointRounding.AwayFromZero);
+
+        return Math.Clamp(idx, 0, Frames.Length - 1);
+    }
 }
