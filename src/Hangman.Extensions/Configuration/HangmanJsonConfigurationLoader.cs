@@ -1,7 +1,7 @@
-﻿using System.Text;
-using System.Text.Json;
-using Hangman.Extensions.Logging;
+﻿using Hangman.Extensions.Logging;
 using Hangman.Extensions.Security;
+using System.Text;
+using System.Text.Json;
 
 namespace Hangman.Extensions.Configuration;
 
