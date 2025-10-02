@@ -2,7 +2,7 @@
 using Hangman.Application.Abstractions;
 using Hangman.Controllers;
 using Hangman.Domain.Models;
-using Hangman.Extensions.Infrastructure;
+using Hangman.Views;
 using NSubstitute;
 
 namespace Hangman.Tests;
@@ -13,7 +13,7 @@ public class InteractiveControllerTests
     [Fact]
     public void Win_Flow_Shows_Win_And_Returns_0()
     {
-        var view = Substitute.For<IView>();
+        var view = Substitute.For<IConsoleView>();
         view.PromptDifficulty(Arg.Any<GameDifficulty>()).Returns(GameDifficulty.Easy);
         view.PromptLetter().Returns("a", "b");
 
@@ -40,7 +40,7 @@ public class InteractiveControllerTests
     [Fact]
     public void Validation_Messages_Are_Shown_And_Lose_Path_Works()
     {
-        var view = Substitute.For<IView>();
+        var view = Substitute.For<IConsoleView>();
         view.PromptDifficulty(Arg.Any<GameDifficulty>()).Returns(GameDifficulty.Normal);
         // invalid -> miss(b) -> repeat(b) -> miss(x) => lose при MaxAttempts=2
         view.PromptLetter().Returns("", "b", "b", "x");

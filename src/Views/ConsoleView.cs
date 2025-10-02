@@ -1,10 +1,9 @@
 ﻿using Hangman.Domain.Models;
-using Hangman.Extensions.Infrastructure;
 
 namespace Hangman.Views;
 
 /// <summary>Консольная реализация интерфейса отображения игры</summary>
-public sealed class ConsoleView : IView
+public sealed class ConsoleView : IConsoleView
 {
     private static readonly string[] Frames =
     [
