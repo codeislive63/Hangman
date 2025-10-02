@@ -32,6 +32,11 @@ public sealed class HangmanEngine
             throw new ArgumentException("Secret word must be non-empty.", nameof(secret));
         }
 
+        if (!secret.Any(IsCyrillicLetter))
+        {
+            throw new ArgumentException("Secret word must contain at least one Cyrillic letter.", nameof(secret));
+        }
+
         _secretOriginal = secret;
         _secretLower = secret.ToLowerInvariant();
 
@@ -54,7 +59,7 @@ public sealed class HangmanEngine
     /// <summary>Обрабатывает ввод одной буквы</summary>
     public GuessResult MakeGuess(char ch)
     {
-        if (!(ch is >= 'а' and <= 'я' or >= 'А' and <= 'Я' or 'ё' or 'Ё'))
+        if (!IsCyrillicLetter(ch))
         {
             return GuessResult.Invalid;
         }
@@ -75,5 +80,10 @@ public sealed class HangmanEngine
         _missedLetters.Add(letter);
 
         return IsLost ? GuessResult.Lose : GuessResult.Miss;
+    }
+
+    private static bool IsCyrillicLetter(char ch)
+    {
+        return (ch >= 'а' && ch <= 'я') || (ch >= 'А' && ch <= 'Я') || ch is 'ё' or 'Ё';
     }
 }
