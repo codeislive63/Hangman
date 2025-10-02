@@ -15,17 +15,17 @@ public class InteractiveControllerTests
     {
         var view = Substitute.For<IConsoleView>();
         view.PromptDifficulty(Arg.Any<GameDifficulty>()).Returns(GameDifficulty.Easy);
-        view.PromptLetter().Returns("a", "b");
+        view.PromptLetter().Returns("а", "б");
 
         var setup = Substitute.For<IGameSetupService>();
         setup.Create(GameDifficulty.Easy).Returns(new GameSession
         {
-            Secret = "ab",
+            Secret = "аб",
             Difficulty = GameDifficulty.Easy,
             MaxAttempts = 5,
             HintThreshold = 1,
-            Category = "t",
-            Hint = "h"
+            Category = "вв",
+            Hint = "гг"
         });
 
         var ctrl = new InteractiveController(setup, view);
@@ -33,7 +33,7 @@ public class InteractiveControllerTests
         var code = ctrl.Run([]);
 
         code.Should().Be(0);
-        view.Received().ShowWin("ab");
+        view.Received().ShowWin("аб");
     }
 
     /// <summary>Показывает сообщения валидации и поведение repeat, затем проигрыш</summary>
@@ -43,17 +43,17 @@ public class InteractiveControllerTests
         var view = Substitute.For<IConsoleView>();
         view.PromptDifficulty(Arg.Any<GameDifficulty>()).Returns(GameDifficulty.Normal);
         // invalid -> miss(b) -> repeat(b) -> miss(x) => lose при MaxAttempts=2
-        view.PromptLetter().Returns("", "b", "b", "x");
+        view.PromptLetter().Returns("", "б", "б", "х");
 
         var setup = Substitute.For<IGameSetupService>();
         setup.Create(GameDifficulty.Normal).Returns(new GameSession
         {
-            Secret = "a",
+            Secret = "а",
             Difficulty = GameDifficulty.Normal,
             MaxAttempts = 2,
             HintThreshold = 0,
-            Category = "c",
-            Hint = "h"
+            Category = "с",
+            Hint = "м"
         });
 
         var ctrl = new InteractiveController(setup, view);
@@ -63,6 +63,6 @@ public class InteractiveControllerTests
         code.Should().Be(0);
         view.Received().ShowMessage(Arg.Is<string>(s => s.Contains("РОВНО одну букву")));
         view.Received().ShowMessage(Arg.Is<string>(s => s.Contains("уже вводилась")));
-        view.Received().ShowLose("a");
+        view.Received().ShowLose("а");
     }
 }
