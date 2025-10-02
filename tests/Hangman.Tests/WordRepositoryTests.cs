@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Hangman.Domain.Models;
 using Hangman.Extensions.Configuration;
-using Hangman.Extensions.Logging;
 using Hangman.Infrastructure.Repositories;
 
 namespace Hangman.Tests;

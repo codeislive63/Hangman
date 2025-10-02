@@ -1,6 +1,6 @@
 ﻿using Hangman.Application.Abstractions;
-using Hangman.Extensions.Configuration;
 using Hangman.Domain.Models;
+using Hangman.Extensions.Configuration;
 
 namespace Hangman.Application.Services;
 
