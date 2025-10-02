@@ -2,16 +2,17 @@
 using Hangman.Domain.Engine;
 using Hangman.Domain.Models;
 using Hangman.Extensions.Infrastructure;
+using Hangman.Views;
 
 namespace Hangman.Controllers;
 
 /// <summary>Интерактивный режим: цикл «показ кадра → ввод → ход движка».</summary>
 public sealed class InteractiveController(
     IGameSetupService gameSetupService,
-    IView view) : IController
+    IConsoleView view) : IController
 {
     private readonly IGameSetupService _gameSetupService = gameSetupService;
-    private readonly IView _view = view;
+    private readonly IConsoleView _view = view;
 
     public bool CanHandle(string[] args) => args.Length != 2;
 
